@@ -2,31 +2,33 @@ import './App.css';
 import {useState,useEffect} from "react"
 import Web3 from "web3"
 import MonsterGame from "./contracts/MonsterGame.json"
+import Header from "./components/header/Header.jsx"
+import MainBox from "./components/mainBox/MainBox.jsx"
 function App() {
   const [contract,setContract]=useState(null);
   const [dataList,setDataList]=useState([])
   const [owner,setOwner]=useState(null)
   const [web3,setWeb3]=useState(null)
-  useEffect(()=>{
-    let getContract=async ()=>{
-      if(window.ethereum){
-            var web3 = new Web3(Web3.givenProvider|| "ws://localhost:7545");
-            console.log('web3',web3);
-            setWeb3(web3)
-            let {abi} =MonsterGame;
-            const networkID = await web3.eth.net.getId();
-            await window.ethereum.enable();
-            let address = MonsterGame.networks[networkID].address;
-            console.log('ddds',address);
+  // useEffect(()=>{
+  //   let getContract=async ()=>{
+  //     if(window.ethereum){
+  //           var web3 = new Web3(Web3.givenProvider|| "ws://localhost:7545");
+  //           console.log('web3',web3);
+  //           setWeb3(web3)
+  //           let {abi} =MonsterGame;
+  //           const networkID = await web3.eth.net.getId();
+  //           await window.ethereum.enable();
+  //           let address = MonsterGame.networks[networkID].address;
+  //           console.log('ddds',address);
             
-            let contract=new web3.eth.Contract(abi,address)
-            setContract(contract);
-          }else{
-            alert("error")
-          }
-    }
-    getContract();
-  },[])
+  //           let contract=new web3.eth.Contract(abi,address)
+  //           setContract(contract);
+  //         }else{
+  //           alert("error")
+  //         }
+  //   }
+  //   getContract();
+  // },[])
   let getOwner=async()=>{
     let owner=await contract.methods.gameOwner().call();
     // 0x4eaB9883825633bb41073Cad0364557084FEC0dc 
@@ -58,9 +60,11 @@ function App() {
   }
   return (
     <div className="App">
-          home
+      <Header></Header>
+      <MainBox></MainBox>
+{/* 
           <button onClick={getDataList}> get</button>
-          <button onClick={createMonster}>create</button>
+          <button onClick={createMonster}>create</button> */}
     </div>
   );
 }

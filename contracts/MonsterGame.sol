@@ -20,6 +20,10 @@ contract MonsterGame is ERC721 {
         monsters.push(Monster("ly", 96));
     }
 
+    function getMonsters() public returns (Monster[] memory list) {
+        list = monsters;
+    }
+
     // 攻击升级
     function battle(uint _attackingMonster, uint _defendingMonster)
         public
