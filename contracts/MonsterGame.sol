@@ -36,7 +36,7 @@ contract MonsterGame is ERC721 {
             defender.level += 1;
         } else {
             attacker.level += 1;
-            attacker.level += 2;
+            defender.level += 2;
         }
     }
 

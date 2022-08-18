@@ -4,3 +4,16 @@
     background-color: #fff;
     display: flex;
 }
+.box{
+    width: 100%;
+    height: 500px;
+    background-color: pink;
+    display: flex;
+    flex-wrap: wrap;
+}
+.item{
+    width: 17%;
+    height: 100px;
+    background-color: rgb(240, 224, 224);
+    margin: 10px;
+}
